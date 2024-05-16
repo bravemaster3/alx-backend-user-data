@@ -79,7 +79,8 @@ def main():
 
     for row in cursor:
         message = "; ".join(
-            [f"{field}={value}" for field, value in zip(cursor.column_names, row)])
+            [f"{field}={value}" for field,
+             value in zip(cursor.column_names, row)])
         logger.info(message)
 
 
