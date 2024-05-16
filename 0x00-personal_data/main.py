@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main file
+Module for loging logs...
 """
 
 import logging
