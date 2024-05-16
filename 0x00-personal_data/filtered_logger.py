@@ -2,6 +2,8 @@
 """
 Module for loging logs...
 """
+import mysql.connector
+import os
 import logging
 import re
 from typing import List
@@ -49,3 +51,20 @@ def get_logger() -> logging.Logger:
     sh.setFormatter(formatter)
     logger.addHandler(sh)
     return logger
+
+
+def get_db() -> 'mysql.connector.connection.MySQLConnection':
+    """Returns a connector to the database."""
+    username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+    db_name = os.getenv('PERSONAL_DATA_DB_NAME')
+
+    config = {
+        'user': username,
+        'password': password,
+        'host': host,
+        'database': db_name,
+    }
+
+    return mysql.connector.connect(**config)
