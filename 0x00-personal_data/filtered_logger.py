@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Module for loging logs...
+"""
 import logging
 import re
 from typing import List
