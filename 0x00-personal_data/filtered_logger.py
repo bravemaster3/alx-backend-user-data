@@ -68,3 +68,20 @@ def get_db() -> 'mysql.connector.connection.MySQLConnection':
     }
 
     return mysql.connector.connect(**config)
+
+
+def main():
+    """Main function that retrieves and logs all rows in the users table."""
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+    logger = get_logger()
+
+    for row in cursor:
+        message = "; ".join(
+            [f"{field}={value}" for field, value in zip(PII_FIELDS, row)])
+        logger.info(message)
+
+
+if __name__ == "__main__":
+    main()
