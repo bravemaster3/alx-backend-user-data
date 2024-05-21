@@ -21,7 +21,7 @@ class Auth():
             return True
         matched = False
         for p in n_excluded_paths:
-            matched += re.match(p, path)
+            matched += re.match(p, n_path)
         if not matched:
             return True
         return False
