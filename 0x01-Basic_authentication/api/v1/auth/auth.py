@@ -21,7 +21,9 @@ class Auth():
             return True
         matched = False
         for p in n_excluded_paths:
-            if re.match(p, n_path):
+            if p.endswith('*') and re.match(p, n_path):
+                matched += True
+            elif p == n_path:
                 matched += True
         if not matched:
             return True
