@@ -11,6 +11,12 @@ class Auth():
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """require authentication method"""
+        if path:
+            n_path = path.rstrip('/')
+        if excluded_paths:
+            n_excluded_paths = [p.rstrip('/') for p in excluded_paths]
+        if not excluded_paths or not path or n_path not in n_excluded_paths:
+            return True
         return False
 
     def authorization_header(self, request=None) -> str:
