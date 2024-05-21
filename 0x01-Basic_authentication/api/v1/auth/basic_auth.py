@@ -5,7 +5,6 @@ This module defines authentication class
 from api.v1.auth.auth import Auth
 import re
 import base64
-from typing import Tuple
 
 
 class BasicAuth(Auth):
@@ -35,7 +34,7 @@ class BasicAuth(Auth):
 
 
     def extract_user_credentials(
-            self, decoded_base64_authorization_header: str) -> Tuple[str, str]:
+            self, decoded_base64_authorization_header: str) -> (str, str):
         """extracting user credentials"""
         if not decoded_base64_authorization_header:
             return None, None
