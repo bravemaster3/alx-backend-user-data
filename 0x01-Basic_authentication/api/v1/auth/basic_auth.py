@@ -61,10 +61,6 @@ class BasicAuth(Auth):
         if not user_x:
             return None
 
-        assert not len(user_x) > 1
-        if len(user_x) == 0:
-            return None
-
         if not user_x[0].is_valid_password(user_pwd):
             return None
         return user_x[0]
