@@ -8,6 +8,7 @@ from api.v1.app import auth
 
 @app_views.route('/login', methods=['POST'])
 def login():
+    """login method"""
     email = request.form.get('email')
     password = request.form.get('password')
     if not email:
