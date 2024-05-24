@@ -26,7 +26,7 @@ def login():
     user_json = user.to_json()
 
     response = make_response(user_json)
-    response.set_cookie(cookie_name=os.getenv('SESSION_NAME',
-                                              '_my_session_id'), session_id)
+    response.set_cookie(os.getenv('SESSION_NAME', '_my_session_id'),
+                        session_id)
 
     return response
