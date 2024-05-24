@@ -8,6 +8,7 @@ from api.v1.auth.session_auth import SessionAuth
 
 
 class SessionExpAuth(SessionAuth):
+    """Class definitino here"""
     def __init__(self):
         """Initialize the class with session duration"""
         super().__init__()
