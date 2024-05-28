@@ -39,7 +39,7 @@ class DB:
             self._session.commit()
         except Exception:
             self._session.rollback()
-            raise
+            new_user = None
         return new_user
 
     def find_user_by(self, **kwargs) -> User:
