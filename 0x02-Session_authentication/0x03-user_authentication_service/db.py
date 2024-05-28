@@ -53,3 +53,13 @@ class DB:
             raise NoResultFound("No result found for the given arguments")
         except InvalidRequestError:
             raise InvalidRequestError("Invalid query arguments")
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Updates a user"""
+        my_user = self.find_user_by(id=user_id)
+        for key in kwargs:
+            if not hasattr(my_user, key):
+                raise ValueError(f"The key {key} is not a valid key of user")
+        for key, value in kwargs.items():
+            setattr(my_user, key, value)
+        self._session.commit()
