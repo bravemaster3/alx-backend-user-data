@@ -63,6 +63,8 @@ def logout():
 def profile():
     """gets a user profile"""
     session_id = request.cookies.get("session_id")
+    if not session_id:
+        abort(403)
     try:
         user = AUTH.get_user_from_session_id(session_id)
         if user:
