@@ -11,13 +11,13 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def home():
+def home() -> str:
     """home route"""
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users():
+def users() -> str:
     """registers a user"""
     email = request.form.get('email')
     password = request.form.get('password')
@@ -30,7 +30,7 @@ def users():
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
-def login():
+def login() -> str:
     """logs a user in"""
     email = request.form.get('email')
     password = request.form.get('password')
@@ -46,7 +46,7 @@ def login():
 
 
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
-def logout():
+def logout() -> str:
     """logs a user in"""
     session_id = request.cookies.get("session_id")
     try:
@@ -60,7 +60,7 @@ def logout():
 
 
 @app.route('/profile', methods=['GET'], strict_slashes=False)
-def profile():
+def profile() -> str:
     """gets a user profile"""
     try:
         session_id = request.cookies.get("session_id")
@@ -74,7 +74,7 @@ def profile():
 
 
 @app.route('/reset_password', methods=['POST'], strict_slashes=False)
-def get_reset_password_token():
+def get_reset_password_token() -> str:
     """resets password"""
     try:
         email = request.form.get("email")
@@ -90,7 +90,7 @@ def get_reset_password_token():
 
 
 @app.route('/reset_password', methods=['PUT'], strict_slashes=False)
-def update_password():
+def update_password() -> str:
     """resets password"""
     email = request.form.get("email")
     reset_token = request.form.get("reset_token")
